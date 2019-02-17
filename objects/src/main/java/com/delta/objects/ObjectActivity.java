@@ -2,12 +2,10 @@ package com.delta.objects;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.Locale;
+import java.util.ArrayList;
 
 public class ObjectActivity extends Activity{
 
@@ -15,6 +13,15 @@ public class ObjectActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object);
+
+
+        ArrayList<Joke> someJokes = JokeWriter.getJokeListOne();
+        JokeBot jokeBot = new JokeBot(someJokes);
+        jokeBot.tellJoke();
+        jokeBot.jokesIKnow = JokeWriter.getJokeListTwo();
+
+        ComedianBot drHilarious = new ComedianBot("DrHilarious");
+        drHilarious .performShow();
 
 
     }
